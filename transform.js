@@ -58,7 +58,9 @@ if (inputPath) {
                 edges.push({
                     source: source.id,
                     target: target.id,
-                    weight: weight,
+                    weight: Math.abs(weight),
+                    signedWeight: weight,
+                    sign: weight < 0 ? -1 : 1,
                     type: 'directed',
                 });
             }
@@ -98,7 +100,7 @@ function exportNodes(nodes, path) {
 }
 
 function exportEdges(edges, path) {
-    const fields = ['source', 'target', 'weight', 'type'];
+    const fields = ['source', 'target', 'weight', 'signedWeight', 'sign', 'type'];
     const json2csvParser = new Json2csvParser({ fields });
 
     const csv = json2csvParser.parse(edges);
