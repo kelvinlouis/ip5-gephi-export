@@ -90,7 +90,7 @@ function decodeWeight(char) {
 }
 
 function exportNodes(nodes, path) {
-    const fields = ['id', 'label', 'type'];
+    const fields = ['id', 'label', 'type', 'actionSystem'];
 
     const json2csvParser = new Json2csvParser({ fields });
     const csv = json2csvParser.parse(nodes);
